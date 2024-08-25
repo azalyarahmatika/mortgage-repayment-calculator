@@ -9,7 +9,6 @@ function DefaultDisplay() {
         <p className='text-sm text-slate_300 px-5'>Complete the form and click &quot;calculate repayments&quot; to see what 
         your monthly repayments would be.</p>
       </div>
-     
     </div>
   )
 }
