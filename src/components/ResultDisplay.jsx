@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 
-function ResultDisplay({mortgageRepayment, totalRepayment}) {
+function ResultDisplay({
+  mortgageRepayment, 
+  totalRepayment, 
+  monthlyInterestPayment, 
+  totalInterestRepayment}) 
+  {
+
   const formatter = new Intl.NumberFormat('en-GB', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -14,12 +20,13 @@ function ResultDisplay({mortgageRepayment, totalRepayment}) {
 
         <div className="text-slate_300 bg-[#0E2532] mt-8 p-4 rounded-lg border-t-4 border-lime font-jakarta-plus">
           <div className="border-b border-slate_300 pb-4 mb-4">
-            <p className='text-sm'>Your monthly repayments</p>
-            <p className="mt-2 text-lime text-[36px] font-bold">{`₤${formatter.format(mortgageRepayment)}`}</p>
+            <p className='text-sm'>{mortgageRepayment > 0 ? `Your monthly repayments` : `Your monthly interest payment`}</p>
+            <p className="mt-2 text-lime text-[36px] font-bold">{mortgageRepayment > 0 ?
+            `₤${formatter.format(mortgageRepayment)}` : `₤${formatter.format(monthlyInterestPayment)}` }</p>
           </div>
           <div>
-            <p className='text-sm'>Total you&apos;ll repay over the term</p>
-            <p className="mt-2 text-slate_100 text-xl font-bold">{`₤${formatter.format(totalRepayment)}`}</p>
+            <p className='text-sm'>{totalRepayment > 0 ? `Total you'll repay over the term` : `Total Interest you'll repay over the term`}</p>
+            <p className="mt-2 text-slate_100 text-xl font-bold">{ totalRepayment > 0 ? `₤${formatter.format(totalRepayment)}` : `₤${formatter.format(totalInterestRepayment)}`}</p>
           </div>
         </div>
       </div>
@@ -29,7 +36,9 @@ function ResultDisplay({mortgageRepayment, totalRepayment}) {
 
 ResultDisplay.propTypes = {
   mortgageRepayment: PropTypes.number,
-  totalRepayment: PropTypes.number
+  totalRepayment: PropTypes.number,
+  monthlyInterestPayment:  PropTypes.number,
+  totalInterestRepayment: PropTypes.number,
 }
 
 export default ResultDisplay;

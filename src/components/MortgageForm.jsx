@@ -14,9 +14,11 @@ function MortgageForm({entryData}) {
   const handleMortgageTypeChange = (e) => setMortgageType(e.target.value);
 
   const handleSubmit = (e) => {
+    let formData = {};
+
     e.preventDefault();
 
-    const formData = {
+    formData = {
       mortgageAmount,
       mortgageTerm,
       interestRate,
@@ -24,7 +26,6 @@ function MortgageForm({entryData}) {
     };
 
     entryData(formData)
-    // console.log('Form submitted with data:', formData);
   };
   return(
     <form className="font-jakarta-plus my-4" onSubmit={handleSubmit}>
