@@ -25,7 +25,7 @@ function ResultDisplay({
             `₤${formatter.format(mortgageRepayment)}` : `₤${formatter.format(monthlyInterestPayment)}` }</p>
           </div>
           <div>
-            <p className='text-sm'>{totalRepayment > 0 ? `Total you'll repay over the term` : `Total Interest you'll repay over the term`}</p>
+            <p className='text-sm'>{totalRepayment > 0 ? `Total you'll repay over the term` : `Total interest you'll repay over the term`}</p>
             <p className="mt-2 text-slate_100 text-xl font-bold">{ totalRepayment > 0 ? `₤${formatter.format(totalRepayment)}` : `₤${formatter.format(totalInterestRepayment)}`}</p>
           </div>
         </div>

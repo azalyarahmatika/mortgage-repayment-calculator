@@ -32,7 +32,6 @@ function App() {
       setMonthlyInterestPayment(parseFloat(monthlyInterestPayment));
       setTotalInterestRepayment(parseFloat(totalInterestRepayment));
     }
-  
   }
 
   return (
