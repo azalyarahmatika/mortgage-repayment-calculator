@@ -21,18 +21,22 @@ function MortgageForm({ entryData }) {
   const handleMortgageAmountChange = (e) => {
     const formattedValue = formatNumber(e.target.value);
     setMortgageAmount(formattedValue);
+    setErrorMortgageAmount(false);
   };
 
   const handleMortgageTermChange = (e) => {
     setMortgageTerm(e.target.value);
+    setErrorMortgageTerm(false);
   };
 
   const handleInterestRateChange = (e) => {
     setInterestRate(e.target.value);
+    setErrorInterestRate(false);
   };
 
   const handleMortgageTypeChange = (e) => {
     setMortgageType(e.target.value);
+    setErrorMortgageType(false);
   };
 
   const handleSubmit = (e) => {
@@ -96,7 +100,7 @@ function MortgageForm({ entryData }) {
 
   return (
     <>
-      <div className="min-[900px]:flex min-[900px]:justify-between min-[900px]:items-center">
+      <div className="min-[1050px]:flex min-[1050px]:justify-between min-[900px]:items-center">
         <h1 className="font-bold text-slate_900 text-2xl">Mortgage Calculator</h1>
         <button className="underline text-sm text-slate_500 md:inline-block" onClick={handleClear}>Clear All</button>
       </div>
@@ -104,8 +108,8 @@ function MortgageForm({ entryData }) {
       <form className="font-jakarta-plus my-4" onSubmit={handleSubmit}>
         <label htmlFor="mortgage_amount" className="text-sm text-slate_500">Mortgage Amount</label>
         <div className='mb-4'>
-          <div className="relative rounded-md overflow-hidden mt-2 border border-slate-500 focus-within:border-lime group">
-            <span className="absolute left-0 top-0 bg-slate-300 px-3 h-9 flex items-center text-slate-700 text-sm group-focus-within:bg-lime">₤</span>
+          <div className={`relative rounded-md overflow-hidden mt-2 border focus-within:border-lime group ${errorMortgageAmount ? 'border-red':'border-slate-500'}`}>
+            <span className={`absolute left-0 top-0 px-3 h-9 flex items-center text-sm group-focus-within:bg-lime ${errorMortgageAmount ? 'bg-red text-white' : 'bg-slate-300 text-slate-700'}`}>₤</span>
             <input 
               id="mortgage_amount" 
               type="text" 
@@ -122,7 +126,7 @@ function MortgageForm({ entryData }) {
           <div className="lg:flex-grow">
             <label htmlFor="mortgage_term" className="text-sm text-slate_500">Mortgage Term</label>
             <div className='mb-4'>
-            <div className={`relative rounded-md overflow-hidden mt-2 border focus-within:border-lime group ${errorMortgageTerm ? 'border-red' : 'border-slate-500'}`}>
+              <div className={`relative rounded-md overflow-hidden mt-2 border focus-within:border-lime group ${errorMortgageTerm ? 'border-red' : 'border-slate-500'}`}>
                 <span className={`absolute right-0 top-1/2 transform -translate-y-1/2  px-3 h-full flex items-center text-slate-700 text-sm group-focus-within:bg-lime ${errorMortgageTerm ? 'bg-red text-white' : 'bg-slate-300 text-slate-700'}`}>years</span>
                 <input 
                   id="mortgage_term" 
@@ -140,8 +144,8 @@ function MortgageForm({ entryData }) {
           <div className="lg:flex-grow">
             <label htmlFor="interest_rate" className="text-sm text-slate_500 border-slate_500">Interest Rate</label>
             <div className='mb-4'>
-              <div className="relative rounded-md overflow-hidden mt-2 border border-slate-500 focus-within:border-lime group">
-                <span className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-300 px-3 h-full flex items-center text-slate-700 text-sm group-focus-within:bg-lime">%</span>
+              <div className={`relative rounded-md overflow-hidden mt-2 border focus-within:border-lime group ${errorInterestRate ? 'border-red' : 'border-slate-500'}`}>
+                <span className={`absolute right-0 top-1/2 transform -translate-y-1/2 px-3 h-full flex items-centertext-sm group-focus-within:bg-lime ${errorInterestRate ? 'bg-red text-white' : 'bg-slate-300 text-slate-700'}`}>%</span>
                 <input 
                   id="interest_rate" 
                   type="number" 
